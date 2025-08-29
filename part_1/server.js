@@ -75,6 +75,15 @@ app.post('/api/data', (req, res) => {
   });
 });
 
+app.delete('/api/data', (req, res) => {
+  data.pop();
+  console.log('Data eliminada');
+  // res.status(200).send({
+  //   message: 'Data eliminada satisfactoriamente',
+  // });
+  res.status(204).send();
+});
+
 app.listen(port, () => {
   console.log(colors.bgGreen(`Servidor corriendo en http://localhost:${port}`));
 });
