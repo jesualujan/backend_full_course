@@ -1,0 +1,28 @@
+### TEST GET / website
+GET http://localhost:3000
+### TEST GET /dashboard website
+GET http://localhost:3000/dashboard
+### TEST GET / DATA ENDPOINT
+GET http://localhost:3000/api/data
+### TEST POST / DATA ENDPOINT FOR ADDING A NEW USER
+POST http://localhost:3000/api/data
+Content-Type: application/json
+
+[
+  {
+   "name": "Emir Lopez",
+   "email": "emirlopez@gmail.com",
+    "age": 25,
+    "city": "Mexico city",
+    "ocupation": "Web Developer",
+    "message": "Hello from the server backend"
+ },
+ {
+   "name": "Guillermo Perez",
+   "email": "guillermoperez@gmail.com",
+    "age": 29,
+    "city": "Mexico city",
+    "ocupation": "Frontend Developer",
+    "message": "Hello from the server backend"
+ }
+]
