@@ -2,6 +2,10 @@ import express from 'express';
 import colors from 'colors';
 import path, { dirname } from 'path'; // Modulo para manejar rutas con archivos
 import { fileURLToPath } from 'url'; // Utilidad para convertir la URL del modulo en ruta de archivo
+// importar las rutas
+import authRoutes from './routes/authRoutes.js';
+import todoRoutes from './routes/todoRoutes.js';
+import authMiddleware from './middlewares/authMiddlewares.js';
 
 const app = express(); // nicializamos la app con express
 const PORT = process.env.PORT || 3001; // definimos el puerto, usando una .env
@@ -22,6 +26,10 @@ app.use(express.json()); // parsear JSON en las solicitudes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
+
+// Routes
+app.use('/auth', authRoutes);
+app.use('/todos', authMiddleware, todoRoutes);
 
 // Iniciamos el servidor y mostramos un mensaje en consola
 app.listen(PORT, () => {
