@@ -1,6 +1,6 @@
 // Importamos las dependencias necesarias
 import express from 'express'; // Framework para crear rutas y manejar peticiones HTTP
-import bcrypt from 'bcryptjs'; // Librería para encriptar contraseñas de forma segura
+import bcrypt from 'bcrypt'; // Librería para encriptar contraseñas de forma segura
 import jwt from 'jsonwebtoken'; // Librería para generar tokens JWT (autenticación)
 import db from '../db.js'; // Importamos la instancia de la base de datos SQLite
 import dontenv from 'dotenv'; // Librería para manejar variables de entorno
