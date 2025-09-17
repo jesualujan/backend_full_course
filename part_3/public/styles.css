@@ -1,0 +1,188 @@
+/* 🔧 Reset y base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* 🧱 Layout */
+main,
+body,
+#auth {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#auth {
+  flex: 1;
+  justify-content: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+.sign-up-text {
+  padding-top: 0;
+}
+
+.register-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* 🧾 Tipografía */
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* 🧭 Navegación */
+.tab-container {
+  overflow-x: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.tab-button span {
+  opacity: 0.5;
+}
+
+.tab-button:hover {
+  color: #000;
+}
+
+.selected-tab {
+  color: #000;
+  position: relative;
+}
+
+.selected-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0077ff;
+  height: 2px;
+  width: 100%;
+  border-radius: 1px;
+}
+
+/* 📋 Tareas */
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.todo-item p {
+  font-weight: 500;
+}
+
+.todo-complete::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* 🧮 Botones de tarea */
+.todo-buttons {
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.todo-buttons button {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.todo-buttons button:hover {
+  opacity: 0.7;
+}
+
+.todo-buttons button:first-of-type {
+  background: #4caf50;
+  color: white;
+}
+
+.todo-buttons button:last-of-type {
+  background: #f44336;
+  color: white;
+}
+
+/* ➕ Input de nueva tarea */
+.input-container {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-container button {
+  padding: 0.5rem 1rem;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 📱 Responsive */
+@media (min-width: 640px) {
+  .tab-button {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .todo-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
