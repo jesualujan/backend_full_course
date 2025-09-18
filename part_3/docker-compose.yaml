@@ -1,0 +1,51 @@
+# 🐳 Versión del esquema de Docker Compose
+version: '3'
+
+# 🔧 Definición de los servicios que se van a levantar
+services:
+  # 🚀 Servicio principal de la aplicación Node.js
+  app:
+    build: . # Construye la imagen desde el Dockerfile ubicado en el directorio actual
+    container_name: todo-app # Nombre personalizado del contenedor para facilitar identificación
+
+    # 🌱 Variables de entorno necesarias para la app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/todoapp # URL de conexión a la base de datos PostgreSQL
+      - JWT_SECRET=mi_clave_super_secreta_123 # Clave secreta para firmar tokens JWT
+      - NODE_ENV=development # Entorno de ejecución (puede ser development, production, etc.)
+      - PORT=5003 # Puerto en el que la app escucha internamente
+
+    # 🌐 Mapeo de puertos: expone el puerto 5003 del contenedor al host
+    ports:
+      - '5003:5003'
+
+    # ⛓️ Este servicio depende del servicio "db", lo que garantiza que se intente iniciar después
+    depends_on:
+      - db
+
+    # 📁 Monta el directorio actual en /app dentro del contenedor (útil para desarrollo en caliente)
+    volumes:
+      - .:/app
+
+  # 🗄️ Servicio de base de datos PostgreSQL
+  db:
+    image: postgres:13-alpine # Imagen ligera de PostgreSQL basada en Alpine Linux
+    container_name: postgres-db # Nombre personalizado del contenedor de la base de datos
+
+    # 🔐 Variables de entorno para inicializar la base de datos
+    environment:
+      POSTGRES_USER: postgres # Usuario por defecto
+      POSTGRES_PASSWORD: postgres # Contraseña del usuario
+      POSTGRES_DB: todoapp # Nombre de la base de datos que se creará al iniciar
+
+    # 🌐 Mapeo de puertos: expone el puerto 5432 del contenedor al host
+    ports:
+      - '5432:5432'
+
+    # 💾 Volumen persistente para guardar los datos de PostgreSQL
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Monta el volumen en el directorio de datos de PostgreSQL
+
+# 📦 Definición de volúmenes persistentes
+volumes:
+  postgres-data: # Volumen nombrado para persistencia de datos entre reinicios
